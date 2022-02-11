@@ -1,0 +1,206 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@400;600;800&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Nunito", sans-serif !important;
+}
+.mat-list-item {
+  font-family: "Nunito", sans-serif !important;
+}
+.mat-body,
+.mat-body-1,
+.mat-typography {
+  font: 400 16px/20px "Nunito", sans-serif !important;
+  letter-spacing: normal;
+}
+.mat-toolbar.mat-primary {
+  background: #fff;
+  color: #000;
+}
+.mat-list-base .mat-list-item {
+  color: #111212;
+}
+.mat-drawer {
+  background-color: #fff;
+  color: #111212;
+}
+.mat-toolbar {
+  color: #33ccad;
+  font-family: "Nunito", sans-serif !important;
+  font-weight: 600;
+  font-size: 36px;
+}
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  height: 70px;
+}
+.mat-nav-list .mat-list-item:hover {
+  background-color: #eaf9f6;
+}
+.mat-list-base .mat-list-item,
+.mat-list-base .mat-list-option {
+  height: 68px !important;
+  font-size: 18px;
+}
+.mat-drawer-container {
+  background-color: #eaf9f6;
+  color: #111212;
+}
+.card {
+  box-shadow: 3px 3px 10px rgb(0 0 0 / 10%);
+  border: none;
+  border-radius: 12px;
+}
+.content_wrapp h5.card-title {
+  font-size: 16px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  font-weight: 600;
+}
+.card.content_wrapp .card-body {
+  padding: 30px;
+}
+sup.require {
+  color: #da1c1c;
+  font-size: 16px;
+  top: -3px;
+}
+.display-block {
+  display: block;
+}
+.btn-blue {
+  background: #33ccad;
+  border-radius: 5px;
+  padding: 12px 15px;
+  font-weight: 600;
+  font-size: 16px;
+}
+.form-control {
+  height: 50px;
+}
+.form-control,
+label,
+textarea {
+  font-family: "Nunito";
+}
+.form-row {
+  margin-bottom: 10px;
+}
+h4.result-wrapp-title {
+  background: #33ccad;
+  padding: 10px 10px;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-family: "Nunito";
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+select.form-control:focus,
+.uneditable-input:focus {
+  border-color: #33ccad;
+  box-shadow: 0 1px 1px rgba(84, 212, 186, 0.075) inset,
+    0 0 8px rgba(68, 228, 196, 0.6);
+  outline: 0 none;
+}
+h4.form-section-title {
+  background: #33ccad;
+  padding: 10px 10px;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-family: "Nunito";
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+h3.page-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+h3.page-title span {
+  margin-right: 6px;
+  background: rgb(84, 212, 186);
+  background: linear-gradient(
+    90deg,
+    rgba(84, 212, 186, 1) 0%,
+    rgba(68, 228, 196, 1) 100%
+  );
+  padding: 6px 8px;
+  border-radius: 5px;
+  font-size: 18px;
+  line-height: 18px;
+  display: inline-block;
+  position: relative;
+  top: -2px;
+}
+.info-box-wrapp {
+  border: 1px solid #33ccad;
+  border-radius: 10px;
+  padding: 30px;
+  margin-top: 50px;
+  position: relative;
+  background: #ebfaf7;
+}
+.info-box-wrapp h5.info-box-title {
+  display: inline-block;
+  background: #33ccad;
+  position: absolute;
+  top: -23px;
+  padding: 12px 30px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.blank-table th,
+.blank-table td {
+  border: none;
+  text-align: center;
+}
+.blank-table th {
+  color: #33ccad;
+}
+.blank-table td {
+  color: #a9abb1;
+}
+#topnav.active {
+  width: 100%;
+  margin-left: 0;
+}
+.btn-menu {
+  border: none;
+  color: #9c9fa6;
+  font-size: 20px;
+  font-weight: bold;
+}
+a.nav-link.account-link {
+  color: #000 !important;
+  font-size: 14px;
+}
+.page-content {
+  background: #ebfaf7;
+  height: 99vh;
+}

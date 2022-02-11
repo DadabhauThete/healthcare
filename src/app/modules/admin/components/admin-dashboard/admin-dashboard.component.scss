@@ -1,0 +1,16 @@
+// .margin-left {
+//   margin-left: 273px;
+// }
+.page-content {
+  width: calc(100% - 17rem);
+  margin-left: 17rem;
+  transition: all 0.4s;
+}
+#content.active {
+  width: 100%;
+  margin: 0;
+}
+#topnav.active {
+  width: 100%;
+  margin-left: 0;
+}

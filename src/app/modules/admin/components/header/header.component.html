@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-lg navbar-dark top-nav" id="topnav">
+  <div class="container-fluid">
+    <!-- Toggle button -->
+    <button
+      id="sidebarCollapse"
+      type="button"
+      class="btn btn-light bg-white btn-menu"
+    >
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <a class="navbar-brand" href="#">Admin Header</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarResponsive"
+      aria-controls="navbarResponsive"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item" role="button">
+          <a class="nav-link account-link" (click)="logout()">logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Vertical navbar -->
+<div class="vertical-nav bg-white" id="sidebar">
+  <div class="py-3 px-3 mb-2">
+    <div class="media d-flex align-items-center">
+      <div class="media-body">
+        <h4 class="m-0 logo">Healthcare</h4>
+      </div>
+    </div>
+  </div>
+  <ul class="vertical-nav-list nav flex-column bg-white mb-0">
+    <li class="nav-item" routerLinkActive="active">
+      <a href="#" class="nav-link text-dark" routerLink="./search-patient">
+        Patient Search
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="nav-item" routerLinkActive="active">
+      <a href="#" class="nav-link text-dark" routerLink="./register-patient">
+        Register Patient
+        <i class="fa fa-user" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="nav-item" routerLinkActive="active">
+      <a
+        href="#"
+        class="nav-link text-dark"
+        routerLink="./add-insurance-benefit"
+      >
+        Add Insurance Benefit
+        <i class="fa fa-money" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="nav-item" routerLinkActive="active">
+      <a
+        href="#"
+        class="nav-link text-dark"
+        routerLink="./view-insurance-benefit"
+      >
+        View Insurance Benefit
+        <i class="fa fa-address-card" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="nav-item" routerLinkActive="active">
+      <a href="#" class="nav-link text-dark" routerLink="./patient-summary">
+        Patient Summary
+        <i class="fa fa-list" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+<!-- End vertical navbar -->

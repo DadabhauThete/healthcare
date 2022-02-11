@@ -1,0 +1,67 @@
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+
+.vertical-nav {
+  min-width: 17rem;
+  width: 17rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s;
+}
+h4.m-0.logo {
+  font-size: 30px;
+  color: #33ccad;
+}
+
+/* for toggle behavior */
+
+#sidebar.active {
+  margin-left: -17rem;
+}
+.top-nav {
+  // box-shadow: 3px 3px 10px rgb(0 0 0 / 10%);
+  // transition: all 0.4s;
+  background-color: #fff;
+  width: calc(100% - 17rem);
+  margin-left: 17rem;
+  transition: all 0.4s;
+}
+
+ul.vertical-nav-list a.nav-link {
+  padding: 20px 24px 15px;
+  font-family: "Nunito";
+  font-weight: normal;
+  font-size: 17px;
+}
+ul.vertical-nav-list a.nav-link:hover,
+ul.vertical-nav-list li.nav-item.active a.nav-link {
+  background-color: #ebfaf7;
+}
+ul.vertical-nav-list a.nav-link i.fa {
+  float: right;
+  line-height: 25px;
+}
+@media (max-width: 768px) {
+  #sidebar {
+    margin-left: -17rem;
+  }
+  #sidebar.active {
+    margin-left: 0;
+  }
+  #content {
+    width: 100%;
+    margin: 0;
+  }
+  #content.active {
+    margin-left: 17rem;
+    width: calc(100% - 17rem);
+  }
+}

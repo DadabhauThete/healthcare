@@ -1,0 +1,21 @@
+h3.page-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+h3.page-title span {
+  margin-right: 6px;
+  background: rgb(84, 212, 186);
+  background: linear-gradient(
+    90deg,
+    rgba(84, 212, 186, 1) 0%,
+    rgba(68, 228, 196, 1) 100%
+  );
+  padding: 6px 8px;
+  border-radius: 5px;
+  font-size: 18px;
+  line-height: 18px;
+  display: inline-block;
+  position: relative;
+  top: -2px;
+}

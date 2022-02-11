@@ -1,0 +1,180 @@
+<div class="page-title-wrapp">
+  <h3 class="page-title">
+    <span><i class="fa fa-money" aria-hidden="true"></i></span> Add Insurance
+    Benefit
+  </h3>
+</div>
+<div class="card content_wrapp">
+  <div class="card-body">
+    <h5 class="card-title">Add Insurance Benefit</h5>
+    <form class="needs-validation" novalidate>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom02">Account Number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="validationCustom02"
+            value=""
+            placeholder="Enter Account Number"
+            required
+          />
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom01">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="validationCustom01"
+            value=""
+            required
+            placeholder="Enter First Name"
+          />
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom01"
+            >Middle Name<sup class="require">*</sup></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="validationCustom01"
+            value=""
+            required
+            placeholder="Enter Middle Name"
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom03"
+            >Last Name<sup class="require">*</sup></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="validationCustom03"
+            placeholder="Enter Last Name"
+            required
+          />
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom03">Date of Birth</label>
+          <div class="form-group">
+            <div class="input-group">
+              <input
+                class="form-control"
+                placeholder="yyyy-mm-dd"
+                name="dp"
+                type="text"
+                [(ngModel)]="model"
+                ngbDatepicker
+                #d="ngbDatepicker"
+              />
+              <div class="input-group-append">
+                <button
+                  class="btn btn-outline-secondary calendar"
+                  (click)="d.toggle()"
+                  type="button"
+                >
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col-md-4 mb-3">
+          <label for="validationCustom03"
+            >Age<sup class="require">*</sup></label
+          >
+          <input type="number" class="form-control" id="" required />
+        </div> -->
+      </div>
+
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom02"
+            >Insurance Type <sup class="require">*</sup></label
+          >
+          <select class="form-control">
+            <option>Select Insurance Type</option>
+          </select>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom01"
+            >Insurance Name<sup class="require">*</sup></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id=""
+            value=""
+            required
+            placeholder="Enter Insurance Name"
+          />
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom01"
+            >Plan Product Name <sup class="require">*</sup></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="validationCustom01"
+            value=""
+            required
+            placeholder="Enter Plan Product Name  "
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom03"
+            >Subscriber Id<sup class="require">*</sup></label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id=""
+            placeholder="Enter Subscriber Id"
+          />
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label class="display-block">&nbsp;</label>
+          <button class="btn btn-blue" type="button">RESET</button> &nbsp;
+          <button class="btn btn-blue" type="submit">SEARCH</button>
+        </div>
+      </div>
+    </form>
+    <div class="result-wrapp">
+      <!-- <h4 class="result-wrapp-title">Result</h4> -->
+      <!-- <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Account No</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Country</th>
+            <th scope="col">Email</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let patient of patients; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ patient.firstname }}</td>
+            <td>{{ patient.lastname }}</td>
+            <td>{{ patient.country }}</td>
+            <td>{{ patient.email }}</td>
+            <td>
+              <i class="fa fa-eye" aria-hidden="true"> </i> |
+              <i class="fa fa-plus-circle" aria-hidden="true"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table> -->
+    </div>
+  </div>
+</div>

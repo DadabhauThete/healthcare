@@ -1,0 +1,126 @@
+<div class="page-title-wrapp">
+  <h3 class="page-title">
+    <span><i class="fa fa-search" aria-hidden="true"></i></span> Search Patient
+  </h3>
+</div>
+<div class="card content_wrapp">
+  <div class="card-body">
+    <h5 class="card-title">Search Patient</h5>
+    <form class="needs-validation" novalidate>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom01"
+            >Account No<sup class="require">*</sup></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="validationCustom01"
+            value=""
+            required
+            placeholder="Enter Account No"
+          />
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom02"
+            >First Name<sup class="require">*</sup></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="validationCustom02"
+            value=""
+            placeholder="Enter First Name"
+            required
+          />
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom03"
+            >Last Name<sup class="require">*</sup></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="validationCustom03"
+            placeholder="Enter Last Name"
+            required
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom03"
+            >Date of Birth<sup class="require">*</sup></label
+          >
+          <div class="form-group">
+            <div class="input-group">
+              <input
+                class="form-control"
+                placeholder="yyyy-mm-dd"
+                name="dp"
+                type="text"
+                [(ngModel)]="model"
+                ngbDatepicker
+                #d="ngbDatepicker"
+              />
+              <div class="input-group-append">
+                <button
+                  class="btn btn-outline-secondary calendar"
+                  (click)="d.toggle()"
+                  type="button"
+                >
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom03"
+            >Contact No<sup class="require">*</sup></label
+          >
+          <input
+            type="tel"
+            class="form-control"
+            id=""
+            pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+            required
+            placeholder="123-456-7890"
+          />
+        </div>
+        <div class="col-md-4 mb-3">
+          <label class="display-block">&nbsp;</label>
+          <button class="btn btn-blue" type="submit">SEARCH</button>
+        </div>
+      </div>
+    </form>
+    <div class="result-wrapp">
+      <h4 class="result-wrapp-title">Result</h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Account No</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Country</th>
+            <th scope="col">Email</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let patient of patients; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ patient.firstname }}</td>
+            <td>{{ patient.lastname }}</td>
+            <td>{{ patient.country }}</td>
+            <td>{{ patient.email }}</td>
+            <td>
+              <i class="fa fa-eye" aria-hidden="true"> </i> |
+              <i class="fa fa-plus-circle" aria-hidden="true"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
