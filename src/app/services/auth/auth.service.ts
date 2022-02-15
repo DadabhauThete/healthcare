@@ -49,8 +49,8 @@ export class AuthService {
 
   // Login
   login(data: any) {
+    return this.http.post(`${baseUrl}Account/login`, data, httpOptions);
     console.log('I am Server');
-    return this.http.post(`${baseUrl}Account/login`, JSON.stringify(data));
   }
   // login(user: User) {
   //   return this.http
