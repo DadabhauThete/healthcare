@@ -6,19 +6,22 @@ import {
   Router,
   RouterStateSnapshot,
 } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router, private auth: AuthService) {}
+  constructor(private router: Router, private authService: AuthService) {}
+
   canActivate(
-    route: ActivatedRouteSnapshot,
+    next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): boolean {
-    if (!this.auth.isLoggedIn()) {
+  ): Observable<boolean> | Promise<boolean> | boolean {
+    if (this.authService.isLoggedIn !== true) {
+      window.alert('Access not allowed!');
       this.router.navigate(['/login']);
     }
-    return this.auth.isLoggedIn();
+    return true;
   }
 }

@@ -1,8 +1,15 @@
 import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
+import { User } from 'src/app/services/auth/user';
+import { Observable, of, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -11,28 +18,37 @@ import { faLock } from '@fortawesome/free-solid-svg-icons';
 })
 export class LoginComponent implements OnInit {
   faLock = faLock;
-  loginForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
-  });
-  constructor(private auth: AuthService, private router: Router) {}
+  loginForm: FormGroup;
+  stringifiedData: any;
+  respondata: any;
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    public fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
-    if (this.auth.isLoggedIn()) {
-      this.router.navigate(['admin']);
-    }
+    this.initForm();
   }
-  onSubmit(): void {
+  initForm() {
+    this.loginForm = new FormGroup({
+      emailId: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
+    });
+  }
+  loginUser() {
     if (this.loginForm.valid) {
-      this.auth.login(this.loginForm.value).subscribe(
-        (result) => {
-          console.log(result);
-          this.router.navigate(['/admin']);
-        },
-        (err: Error) => {
-          alert(err.message);
+      //this.stringifiedData = JSON.stringify(this.loginForm.valid);
+      this.authService.login(this.loginForm.value).subscribe((result) => {
+        if (result != null) {
+          this.respondata = result;
+          localStorage.setItem('token', this.respondata.token);
+          this.router.navigate(['admin']);
+          console.log(this.respondata);
+        } else {
+          alert(result);
         }
-      );
+      });
     }
   }
 }

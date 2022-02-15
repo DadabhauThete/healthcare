@@ -9,7 +9,8 @@ import { NgbModule, NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './services/auth/authconfig.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,8 +25,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgbModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -12,14 +12,14 @@
 
       <div class="card my-auto border-none boxshadow-none">
         <div class="card-body px-5">
-          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
             <div class="form-group">
               <input
                 type="email"
-                id="email"
+                id="emailId"
                 placeholder="Username"
                 class="form-control"
-                formControlName="email"
+                formControlName="emailId"
                 name="email"
               />
             </div>
@@ -40,6 +40,7 @@
               name=""
             />
           </form>
+          {{ respondata }}
         </div>
         <div class="card-footer text-center border-none background-none">
           <small
