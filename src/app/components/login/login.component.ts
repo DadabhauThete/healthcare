@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
     });
   }
   loginUser() {
+    //const val: any = this.loginForm.value;
     if (this.loginForm.valid) {
       //this.stringifiedData = JSON.stringify(this.loginForm.valid);
       this.authService.login(this.loginForm.value).subscribe((result) => {

@@ -6,9 +6,6 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
-import { ContactComponent } from './components/contact/contact.component';
-import { ServicesComponent } from './components/services/services.component';
-import { AboutComponent } from './components/about/about.component';
 import { SearchpatientComponent } from './components/searchpatient/searchpatient.component';
 import { NgbDate, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,9 +20,6 @@ import { PatientsummaryComponent } from './components/patientsummary/patientsumm
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    ContactComponent,
-    ServicesComponent,
-    AboutComponent,
     SearchpatientComponent,
     PatientregistrationComponent,
     AddinsurancebenefitComponent,

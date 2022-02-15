@@ -17,10 +17,6 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class AuthService {
-  headers = new HttpHeaders()
-    .set('Content-Type', 'application/json')
-    .set('Access-Control-Allow-Origin', '*')
-    .set('Access-Control-Allow-Methods', 'GET,POST,OPTIONS,DELETE,PUT');
   constructor(private router: Router, private http: HttpClient) {}
 
   setToken(token: string): void {
@@ -48,10 +44,24 @@ export class AuthService {
   }
 
   // Login
+  // login(email: string, password: string) {
+  //   return this.http.post(
+  //     `${baseUrl}Account/login`,
+  //     { email, password },
+  //     httpOptions
+  //   );
+  //   console.log('I am Server');
+  // }
+
   login(data: any) {
-    return this.http.post(`${baseUrl}Account/login`, data, httpOptions);
+    return this.http.post(
+      `${baseUrl}Account/login`,
+      JSON.stringify(data),
+      httpOptions
+    );
     console.log('I am Server');
   }
+
   // login(user: User) {
   //   return this.http
   //     .post<any>(`${baseUrl}Account/login`, user)

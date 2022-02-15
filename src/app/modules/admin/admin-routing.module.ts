@@ -2,9 +2,6 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { AboutComponent } from './components/about/about.component';
-import { ServicesComponent } from './components/services/services.component';
-import { ContactComponent } from './components/contact/contact.component';
 import { SearchpatientComponent } from './components/searchpatient/searchpatient.component';
 import { PatientregistrationComponent } from './components/patientregistration/patientregistration.component';
 import { AddinsurancebenefitComponent } from './components/addinsurancebenefit/addinsurancebenefit.component';
@@ -31,9 +28,6 @@ const routes: Routes = [
         path: 'patient-summary',
         component: PatientsummaryComponent,
       },
-      { path: 'about', component: AboutComponent },
-      { path: 'services', component: ServicesComponent },
-      { path: 'contact', component: ContactComponent },
       { path: '', redirectTo: '/admin/search-patient', pathMatch: 'full' },
     ],
   },
