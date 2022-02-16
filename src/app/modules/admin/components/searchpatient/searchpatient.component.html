@@ -6,58 +6,104 @@
 <div class="card content_wrapp">
   <div class="card-body">
     <h5 class="card-title">Search Patient</h5>
-    <form class="needs-validation" novalidate>
+    <form
+      class="needs-validation"
+      [formGroup]="searchPatientForm"
+      (ngSubmit)="onSubmit()"
+      novalidate
+    >
       <div class="form-row">
         <div class="col-md-4 mb-3">
-          <label for="validationCustom01"
-            >Account No<sup class="require">*</sup></label
+          <label for="accountname">
+            Account No<sup class="require">*</sup></label
           >
           <input
             type="text"
             class="form-control"
-            id="validationCustom01"
+            id="accountname"
             value=""
+            formControlName="accountNumer"
             required
             placeholder="Enter Account No"
+            [ngClass]="{ error: submitted && myForm.accountNumer.errors }"
           />
+          <!-- error block -->
+          <div
+            class="invalid-feedback"
+            *ngIf="submitted && myForm.accountNumer.errors?.required"
+          >
+            Enter Account No
+          </div>
         </div>
+
         <div class="col-md-4 mb-3">
-          <label for="validationCustom02"
+          <label
+            for="firstname"
+            [ngClass]="{
+              error: submitted && myForm.firstName.errors
+            }"
             >First Name<sup class="require">*</sup></label
           >
           <input
             type="text"
             class="form-control"
-            id="validationCustom02"
+            id="firstname"
             value=""
+            formControlName="firstName"
             placeholder="Enter First Name"
             required
           />
+          <!-- error block -->
+          <div
+            class="invalid-feedback"
+            *ngIf="submitted && myForm.accountNumer.errors?.required"
+          >
+            Enter Account No
+          </div>
         </div>
         <div class="col-md-4 mb-3">
-          <label for="validationCustom03"
+          <label
+            for="lastname"
+            [ngClass]="{
+              error: submitted && myForm.lastName.errors
+            }"
             >Last Name<sup class="require">*</sup></label
           >
           <input
             type="text"
             class="form-control"
-            id="validationCustom03"
+            id="lastname"
+            formControlName="lastName"
             placeholder="Enter Last Name"
             required
           />
+          <!-- error block -->
+          <div
+            class="invalid-feedback"
+            *ngIf="submitted && myForm.accountNumer.errors?.required"
+          >
+            Enter Account No
+          </div>
         </div>
       </div>
       <div class="form-row">
         <div class="col-md-4 mb-3">
-          <label for="validationCustom03"
-            >Date of Birth<sup class="require">*</sup></label
+          <label for="dateofbirth">
+            Date of Birth<sup class="require">*</sup></label
           >
           <div class="form-group">
-            <div class="input-group">
+            <div
+              class="input-group"
+              [ngClass]="{
+                error: submitted && myForm.dateOfBirth.errors
+              }"
+            >
               <input
                 class="form-control"
                 placeholder="yyyy-mm-dd"
                 name="dp"
+                id="dateofbirth"
+                formControlName="dateOfBirth"
                 [(ngModel)]="model"
                 ngbDatepicker
                 #d="ngbDatepicker"
@@ -73,23 +119,41 @@
               </div>
             </div>
           </div>
+          <!-- error block -->
+          <div
+            class="error-block"
+            *ngIf="submitted && myForm.accountNumer.errors?.required"
+          >
+            Enter Account No
+          </div>
         </div>
         <div class="col-md-4 mb-3">
-          <label for="validationCustom03"
+          <label
+            for="contactno"
+            [ngClass]="{
+              error: submitted && myForm.contactNo.errors
+            }"
             >Contact No<sup class="require">*</sup></label
           >
           <input
             type="tel"
             class="form-control"
-            id=""
+            id="contactno"
             pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
             required
+            formControlName="contactNo"
             placeholder="123-456-7890"
           />
         </div>
         <div class="col-md-4 mb-3">
           <label class="display-block">&nbsp;</label>
-          <button class="btn btn-blue" type="submit">SEARCH</button>
+          <button
+            class="btn btn-blue"
+            type="submit"
+            [disabled]="searchPatientForm.invalid"
+          >
+            SEARCH
+          </button>
         </div>
       </div>
     </form>

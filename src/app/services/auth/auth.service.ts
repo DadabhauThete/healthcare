@@ -6,8 +6,7 @@ import {
   HttpHeaders,
   HttpErrorResponse,
 } from '@angular/common/http';
-import { baseUrl } from 'src/environments/environment';
-import { User } from '../auth/user';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -27,11 +26,6 @@ export class AuthService {
     return localStorage.getItem('access_token');
   }
 
-  // isLoggedIn() {
-  //   //return this.getToken() !== null;
-  //   let authToken = localStorage.getItem('access_token');
-  //   return authToken !== null ? true : false;
-  // }
   get isLoggedIn(): boolean {
     let authToken = localStorage.getItem('access_token');
     return authToken !== null ? true : false;
@@ -43,33 +37,14 @@ export class AuthService {
     }
   }
 
-  // Login
-  // login(email: string, password: string) {
-  //   return this.http.post(
-  //     `${baseUrl}Account/login`,
-  //     { email, password },
-  //     httpOptions
-  //   );
-  //   console.log('I am Server');
-  // }
-
   login(data: any) {
     return this.http.post(
-      `${baseUrl}Account/login`,
+      `${environment.baseUrl}Account/login`,
       JSON.stringify(data),
       httpOptions
     );
     console.log('I am Server');
   }
-
-  // login(user: User) {
-  //   return this.http
-  //     .post<any>(`${baseUrl}Account/login`, user)
-  //     .subscribe((res: any) => {
-  //       localStorage.setItem('access_token', res.token);
-  //       this.router.navigate(['/admin']);
-  //     });
-  // }
 
   // Error
   handleError(error: HttpErrorResponse) {

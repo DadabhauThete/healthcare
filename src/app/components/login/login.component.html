@@ -12,7 +12,11 @@
 
       <div class="card my-auto border-none boxshadow-none">
         <div class="card-body px-5">
-          <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+          <form
+            class="loginform"
+            [formGroup]="loginForm"
+            (ngSubmit)="loginUser()"
+          >
             <div class="form-group">
               <input
                 type="email"
@@ -22,6 +26,13 @@
                 formControlName="emailId"
                 name="email"
               />
+              <!-- error block -->
+              <div
+                class="error-block"
+                *ngIf="email && email.invalid && email.touched"
+              >
+                Please enter valid email id
+              </div>
             </div>
             <div class="form-group">
               <input
@@ -32,20 +43,32 @@
                 formControlName="password"
                 name="password"
               />
+              <!-- error block -->
+              <div
+                class="error-block"
+                *ngIf="password && password.invalid && password.touched"
+              >
+                Please enter valid password
+              </div>
             </div>
             <input
               type="submit"
               class="btn btn-primary w-100 login-btn"
               value="Login"
+              [disabled]="loginForm.invalid"
               name=""
             />
           </form>
-          <!-- {{ respondata | json }} -->
-        </div>
-        <div class="card-footer text-center border-none background-none">
-          <small
-            ><a class="forgot-password" routerLink="">Forgot Password</a></small
-          >
+          <div class="alert alert-danger mt-3" *ngIf="errorApi" role="alert">
+            {{ errordata.error }}
+          </div>
+          <div class="card-footer text-center border-none background-none">
+            <small
+              ><a class="forgot-password" routerLink=""
+                >Forgot Password</a
+              ></small
+            >
+          </div>
         </div>
       </div>
     </div>

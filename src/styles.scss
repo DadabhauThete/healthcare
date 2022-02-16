@@ -204,3 +204,7 @@ a.nav-link.account-link {
   background: #ebfaf7;
   height: 99vh;
 }
+
+.ng-invalid.ng-touched {
+  border-color: red;
+}

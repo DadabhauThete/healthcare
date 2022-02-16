@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { SearchpatientComponent } from './components/searchpatient/searchpatient.component';
 import { NgbDate, NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -18,7 +17,6 @@ import { PatientsummaryComponent } from './components/patientsummary/patientsumm
   declarations: [
     AdminDashboardComponent,
     HeaderComponent,
-    FooterComponent,
     HomeComponent,
     SearchpatientComponent,
     PatientregistrationComponent,
@@ -26,6 +24,12 @@ import { PatientsummaryComponent } from './components/patientsummary/patientsumm
     ViewinsurancebenefitComponent,
     PatientsummaryComponent,
   ],
-  imports: [CommonModule, AdminRoutingModule, NgbModule, FormsModule],
+  imports: [
+    CommonModule,
+    AdminRoutingModule,
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
 export class AdminModule {}

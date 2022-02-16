@@ -59,9 +59,11 @@ p.login-text {
 }
 .form-control {
   height: 50px;
-  margin-bottom: 30px;
   color: #95a5b5;
 }
 .boxshadow-none {
   box-shadow: none;
+}
+.loginform .form-group {
+  margin-bottom: 30px;
 }
