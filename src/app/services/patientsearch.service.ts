@@ -35,6 +35,14 @@ export class PatientSearch {
       httpOptions
     );
   }
+
+  // getPatientsListById(patientData:Patient):Observable<any>{
+  //   return this.http.post(
+  //     `${environment.baseUrl}Patient/PatientSearch`,
+  //     patientData,
+  //     httpOptions
+  //   );
+  // }
   // getPatientsList(patientdata: PatientData[]) {
   //   return this.http
   //     .post(`${environment.baseUrl}Patient/PatientSearch`, patientdata)

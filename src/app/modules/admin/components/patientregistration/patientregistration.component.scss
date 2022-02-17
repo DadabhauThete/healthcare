@@ -24,3 +24,12 @@ h3.page-title span {
   margin-top: 5px;
   color: red;
 }
+
+.toastSuccessStyleClass{
+  background-color: green;
+  color: white;
+  position: fixed;
+  top: 10;
+  right: 0;
+  z-index: 1200;
+}

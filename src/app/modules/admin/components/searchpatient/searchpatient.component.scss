@@ -26,3 +26,12 @@ h3.page-title span {
 .formgroup {
   display: flex;
 }
+
+.toastDangerStyleClass{
+  background-color: red;
+  color: white;
+  position: fixed;
+  top: 10;
+  right: 0;
+  z-index: 1200;
+}

@@ -27,6 +27,8 @@ import { Patient } from './../../../../services/patients';
 export class SearchpatientComponent implements OnInit {
   model: NgbDateStruct;
   submitted = false;
+  isInvalid= false;
+  show = false;
   respondata: any;
   errordata: any;
   patientdata: any = {};
@@ -39,19 +41,19 @@ export class SearchpatientComponent implements OnInit {
     firstName: [
       '',
       [
-        Validators.required,
+        // Validators.required,
         Validators.minLength(2),
         Validators.pattern('^[_A-z0-9]*((-|s)*[_A-z0-9])*$'),
       ],
     ],
     middleName: [''],
-    lastname: ['', [Validators.required]],
-    dateOfBirth: ['', [Validators.required]],
-    age: [''],
+    lastname: [''],
+    dateOfBirth: [''],
+    age: 0,
     contactNo: [
       '',
       [
-        Validators.required,
+        // Validators.required,
         Validators.maxLength(10),
         Validators.pattern('^[0-9]+$'),
       ],
@@ -77,29 +79,46 @@ export class SearchpatientComponent implements OnInit {
   }
   ngOnInit(): void {}
 
+  close(){
+    this.isInvalid = false;
+  }
+
   // Submit Registration Form
   onSubmit() {
-    this.submitted = true;
+    console.log('response data',this.searchPatientForm.controls['patientId'].value, 
+    this.searchPatientForm.controls['middleName'].value,
+    this.searchPatientForm.controls['lastname'].value,
+    this.searchPatientForm.controls['dateOfBirth'].value,
+    this.searchPatientForm.controls['contactNo'].value);
+
+    if(this.searchPatientForm.controls['patientId'].value === '' && 
+    this.searchPatientForm.controls['middleName'].value === ''&&
+    this.searchPatientForm.controls['lastname'].value === '' &&
+    this.searchPatientForm.controls['dateOfBirth'].value === undefined &&
+    this.searchPatientForm.controls['contactNo'].value === ''){
+      this.isInvalid = true
+    } else {
+      this.submitted = true;
+
     let ngbDate = this.searchPatientForm.controls['dateOfBirth'].value;
-    let myDate = new Date(ngbDate.year, ngbDate.month - 1, ngbDate.day);
+    let myDate = new Date(ngbDate.year, ngbDate.month, ngbDate.day);
     let formValues = this.searchPatientForm.value;
     formValues['dateOfBirth'] = myDate;
     console.log(formValues);
+
     if (this.searchPatientForm.valid) {
+      
       this.patientSearch.getPatientsList(formValues).subscribe(
         (result) => {
           this.respondata = result;
-          // display form values on success
-          alert(
-            'SUCCESS!! :-)\n\n' +
-              JSON.stringify(this.searchPatientForm.value, null, 4)
-          );
         },
         (err) => {
           this.errordata = err;
           console.log(this.errordata.error);
         }
       );
+      this.searchPatientForm.reset();
+    }
     }
   }
 }

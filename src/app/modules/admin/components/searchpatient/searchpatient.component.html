@@ -1,11 +1,16 @@
+<ngb-toast *ngIf="isInvalid" [autohide]="false"  (click)="close()" class="toastDangerStyleClass">
+  Please Enter atleast one value &nbsp;&nbsp;&nbsp;&nbsp;<span> X</span> 
+</ngb-toast>
+
 <div class="page-title-wrapp">
   <h3 class="page-title">
-    <span><i class="fa fa-search" aria-hidden="true"></i></span> Search Patient
+    <span><i class="fa fa-search" aria-hidden="true"></i></span> Search Member
   </h3>
 </div>
 <div class="card content_wrapp">
   <div class="card-body">
-    <h5 class="card-title">Search Patient</h5>
+    <h5 class="card-title">Search Member</h5>
+   
     <form
       class="needs-validation"
       [formGroup]="searchPatientForm"
@@ -15,7 +20,7 @@
       <div class="form-row">
         <div class="col-md-4 mb-3">
           <label for="accountname">
-            Account No<sup class="require">*</sup></label
+            Account No </label
           >
           <input
             type="number"
@@ -23,7 +28,7 @@
             id="accountname"
             value=""
             formControlName="patientId"
-            required
+            
             placeholder="Enter Account No"
           />
           <!-- error block -->
@@ -36,7 +41,8 @@
         </div>
 
         <div class="col-md-4 mb-3">
-          <label for="firstname">First Name<sup class="require">*</sup></label>
+          <label for="firstname">First Name</label>
+
           <input
             type="text"
             class="form-control"
@@ -44,7 +50,7 @@
             value=""
             formControlName="firstName"
             placeholder="Enter First Name"
-            required
+            
           />
           <!-- error block -->
           <div
@@ -55,14 +61,14 @@
           </div>
         </div>
         <div class="col-md-4 mb-3">
-          <label for="lastname">Last Name<sup class="require">*</sup></label>
+          <label for="lastname">Last Name</label>
           <input
             type="text"
             class="form-control"
             id="lastname"
             formControlName="lastname"
             placeholder="Enter Last Name"
-            required
+            
           />
           <!-- error block -->
           <div
@@ -76,13 +82,13 @@
       <div class="form-row">
         <div class="col-md-4 mb-3">
           <label for="dateofbirth">
-            Date of Birth<sup class="require">*</sup></label
+            Date of Birth </label
           >
           <div class="form-group">
             <div class="input-group">
               <input
                 class="form-control"
-                placeholder="yyyy-mm-dd"
+                placeholder="MM-DD-YYYY"
                 name="dp"
                 id="dateofbirth"
                 formControlName="dateOfBirth"
@@ -112,12 +118,12 @@
           </div>
         </div>
         <div class="col-md-4 mb-3">
-          <label for="contactno">Contact No<sup class="require">*</sup></label>
+          <label for="contactno">Contact No </label>
           <input
             type="tel"
             class="form-control"
             id="contactno"
-            required
+            
             formControlName="contactNo"
             placeholder="123-456-7890"
           />
@@ -135,7 +141,6 @@
         </div>
       </div>
     </form>
-    {{ searchPatientForm.value | json }}
     <div class="result-wrapp">
       <h4 class="result-wrapp-title">Result</h4>
       <!-- <table class="table table-striped">
