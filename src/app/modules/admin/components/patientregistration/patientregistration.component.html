@@ -7,201 +7,352 @@
 <div class="card content_wrapp">
   <div class="card-body">
     <h5 class="card-title">Patient Registration</h5>
-    <form class="needs-validation" novalidate>
-      <h4 class="form-section-title">PERSONAL DETAILS</h4>
-      <div class="form-row">
-        <div class="col-md-4 mb-3">
-          <label for="validationCustom02"
-            >First Name<sup class="require">*</sup></label
-          >
-          <input
-            type="text"
-            class="form-control"
-            id="validationCustom02"
-            value=""
-            placeholder="Enter First Name"
-            required
-          />
-        </div>
-        <div class="col-md-4 mb-3">
-          <label for="validationCustom01"
-            >Middle Name<sup class="require">*</sup></label
-          >
-          <input
-            type="text"
-            class="form-control"
-            id="validationCustom01"
-            value=""
-            required
-            placeholder="Enter Middle Name"
-          />
-        </div>
-        <div class="col-md-4 mb-3">
-          <label for="validationCustom03"
-            >Last Name<sup class="require">*</sup></label
-          >
-          <input
-            type="text"
-            class="form-control"
-            id="validationCustom03"
-            placeholder="Enter Last Name"
-            required
-          />
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="col-md-4 mb-3">
-          <label class="display-block"
-            >Gender<sup class="require">*</sup></label
-          >
-          <div class="form-check form-check-inline">
+    <form
+      class="needs-validation"
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()"
+      novalidate
+      #formGroupRef="ngForm"
+    >
+      <!-- Full name -->
+      <div formGroupName="personal">
+        <h4 class="form-section-title">PERSONAL DETAILS</h4>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="firstname"
+              >First Name<sup class="require">*</sup></label
+            >
             <input
-              class="form-check-input"
-              type="radio"
-              name="inlineRadioOptions"
-              id="inlineRadio1"
-              value="option1"
+              type="text"
+              class="form-control"
+              id="firstname"
+              value=""
+              placeholder="Enter First Name"
+              required
+              formControlName="firstName"
             />
-            <label class="form-check-label" for="inlineRadio1">Male</label>
+            <!-- error block -->
+            <div
+              class="error-block"
+              *ngIf="firstName && firstName.invalid && firstName.touched"
+            >
+              <p>Please enter first name</p>
+            </div>
           </div>
-          <div class="form-check form-check-inline">
+          <div class="col-md-4 mb-3">
+            <label for="middlename"
+              >Middle Name<sup class="require">*</sup></label
+            >
             <input
-              class="form-check-input"
-              type="radio"
-              name="inlineRadioOptions"
-              id="inlineRadio2"
-              value="option2"
+              type="text"
+              class="form-control"
+              id="middlename"
+              value=""
+              required
+              placeholder="Enter Middle Name"
+              formControlName="middleName"
             />
-            <label class="form-check-label" for="inlineRadio2">Female</label>
+            <!-- error block -->
+            <div
+              class="error-block"
+              *ngIf="middleName && middleName.invalid && middleName.touched"
+            >
+              <p>Please enter middle name</p>
+            </div>
           </div>
-        </div>
-        <div class="col-md-4 mb-3">
-          <label for="validationCustom03"
-            >Date of Birth<sup class="require">*</sup></label
-          >
-          <div class="form-group">
-            <div class="input-group">
-              <input
-                class="form-control"
-                placeholder="yyyy-mm-dd"
-                name="dp"
-                type="text"
-                [(ngModel)]="model"
-                ngbDatepicker
-                #d="ngbDatepicker"
-              />
-              <div class="input-group-append">
-                <button
-                  class="btn btn-outline-secondary calendar"
-                  (click)="d.toggle()"
-                  type="button"
-                >
-                  <i class="fa fa-calendar" aria-hidden="true"></i>
-                </button>
-              </div>
+          <div class="col-md-4 mb-3">
+            <label for="lastname">Last Name<sup class="require">*</sup></label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastname"
+              placeholder="Enter Last Name"
+              required
+              formControlName="lastname"
+            />
+            <!-- error block -->
+            <div
+              class="error-block"
+              *ngIf="lastname && lastname.invalid && lastname.touched"
+            >
+              <p>Please enter last name</p>
             </div>
           </div>
         </div>
-        <div class="col-md-4 mb-3">
-          <label for="validationCustom03"
-            >Age<sup class="require">*</sup></label
-          >
-          <input type="number" class="form-control" id="" required />
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label class="display-block"
+              >Gender<sup class="require">*</sup></label
+            >
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                id="male"
+                value="male"
+                name="gender"
+                formControlName="gender"
+                checked
+              />
+              <!-- error block -->
+              <!-- <div
+                class="error-block"
+                *ngIf="firstName && firstName.invalid && firstName.touched"
+              >
+                <p>Please enter first name</p>
+              </div> -->
+              <label class="form-check-label" for="male">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="gender"
+                formControlName="gender"
+                id="female"
+                value="female"
+              />
+              <label class="form-check-label" for="female">Female</label>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="dateofbirth"
+              >Date of Birth<sup class="require">*</sup></label
+            >
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  class="form-control"
+                  placeholder="yyyy-mm-dd"
+                  name="dp"
+                  type="text"
+                  id="dateofbirth"
+                  [(ngModel)]="model"
+                  ngbDatepicker
+                  #d="ngbDatepicker"
+                  formControlName="dateOfBirth"
+                  [minDate]="{ year: 1990, month: 1, day: 1 }"
+                  [maxDate]="{ year: 2048, month: 12, day: 31 }"
+                  (ngModelChange)="($event)"
+                />
+
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-outline-secondary calendar"
+                    (click)="d.toggle()"
+                    type="button"
+                  >
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- error block -->
+              <div
+                class="error-block"
+                *ngIf="
+                  dateOfBirth && dateOfBirth.invalid && dateOfBirth.touched
+                "
+              >
+                <p>Please select date of birth</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="age">Age<sup class="require">*</sup></label>
+            <input
+              type="number"
+              class="form-control"
+              id="age"
+              formControlName="age"
+              required
+            />
+            <!-- error block -->
+            <!-- <div
+              class="error-block"
+              *ngIf="firstName && firstName.invalid && firstName.touched"
+            >
+              <p>Please enter first name</p>
+            </div> -->
+          </div>
+        </div>
+        <h4 class="form-section-title">CONTACT DETAILS</h4>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="email">Email<sup class="require">*</sup></label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              aria-describedby="emailHelp"
+              placeholder="Enter Email"
+              formControlName="email"
+            />
+            <!-- error block -->
+            <div
+              class="error-block"
+              *ngIf="email && email.invalid && email.touched"
+            >
+              <p>Please enter valid email</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="contactno"
+              >Contact No<sup class="require">*</sup></label
+            >
+            <input
+              type="tel"
+              class="form-control"
+              id="contactno"
+              required
+              placeholder="123-456-7890"
+              formControlName="contactNo"
+            />
+            <!-- error block -->
+            <div
+              class="error-block"
+              *ngIf="contactNo && contactNo.invalid && contactNo.touched"
+            >
+              <p>Please enter contact number</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label class="display-block">&nbsp;</label>
+          </div>
         </div>
       </div>
-      <h4 class="form-section-title">ADDRESS DETAILS</h4>
-      <div class="form-row">
-        <div class="col-md-4 mb-3">
-          <label for="validationCustom02"
-            >Address 1<sup class="require">*</sup></label
-          >
-          <input
-            type="text"
-            class="form-control"
-            id="validationCustom02"
-            value=""
-            placeholder="Enter Address 1"
-            required
-          />
+      <!---->
+      <!-- Address -->
+      <div formGroupName="address">
+        <h4 class="form-section-title">ADDRESS DETAILS</h4>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="address1">Address 1<sup class="require">*</sup></label>
+            <input
+              type="text"
+              class="form-control"
+              id="address1"
+              value=""
+              placeholder="Enter Address 1"
+              required
+              formControlName="address1"
+            />
+            <!-- error block -->
+            <div
+              class="error-block"
+              *ngIf="address1 && address1.invalid && address1.touched"
+            >
+              <p>Please enter address1</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="address2">Address 2</label>
+            <input
+              type="text"
+              class="form-control"
+              id="address2"
+              value=""
+              placeholder="Enter Address 2"
+              formControlName="address2"
+              required
+            />
+            <!-- error block -->
+            <div
+              class="error-block"
+              *ngIf="address2 && address2.invalid && address2.touched"
+            >
+              <p>Please enter address2</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="country">Country<sup class="require">*</sup></label>
+            <input
+              type="text"
+              class="form-control"
+              id="country"
+              formControlName="country"
+            />
+            <!-- error block -->
+            <div
+              class="error-block"
+              *ngIf="country && country.invalid && country.touched"
+            >
+              <p>Please enter country</p>
+            </div>
+          </div>
         </div>
-        <div class="col-md-4 mb-3">
-          <label for="validationCustom02">Address 2</label>
-          <input
-            type="text"
-            class="form-control"
-            id="validationCustom02"
-            value=""
-            placeholder="Enter Address 2"
-            required
-          />
-        </div>
-        <div class="col-md-4 mb-3">
-          <label for="validationCustom02"
-            >Country<sup class="require">*</sup></label
-          >
-          <select class="form-control">
-            <option>Select Country</option>
-          </select>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="state">State<sup class="require">*</sup></label>
+            <input
+              type="text"
+              class="form-control"
+              id="state"
+              formControlName="state"
+            />
+            <!-- error block -->
+            <div
+              class="error-block"
+              *ngIf="state && state.invalid && state.touched"
+            >
+              <p>Please enter state</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="city">City<sup class="require">*</sup></label>
+            <input
+              type="text"
+              class="form-control"
+              id="city"
+              formControlName="city"
+              required
+            />
+            <!-- error block -->
+            <div
+              class="error-block"
+              *ngIf="city && city.invalid && city.touched"
+            >
+              <p>Please enter city</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="zipcode">Zip Code<sup class="require">*</sup></label>
+            <input
+              type="number"
+              class="form-control"
+              id="zipcode"
+              formControlName="zipCode"
+              required
+            />
+            <!-- error block -->
+            <div
+              class="error-block"
+              *ngIf="zipCode && zipCode.invalid && zipCode.touched"
+            >
+              <p>Please enter zip code</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="form-row">
+      <!---->
+      <div class="form-row text-right">
+        <div class="col-md-4 mb-3"></div>
+        <div class="col-md-4 mb-3"></div>
         <div class="col-md-4 mb-3">
-          <label for="validationCustom02"
-            >State<sup class="require">*</sup></label
+          <button class="btn btn-blue" type="button" (click)="onReset()">
+            RESET
+          </button>
+          &nbsp;
+          <button
+            class="btn btn-blue"
+            [disabled]="registerForm.invalid"
+            type="submit"
           >
-          <select class="form-control">
-            <option>Select State</option>
-          </select>
-        </div>
-        <div class="col-md-4 mb-3">
-          <label for="validationCustom02"
-            >City<sup class="require">*</sup></label
-          >
-          <select class="form-control">
-            <option>Select City</option>
-          </select>
-        </div>
-        <div class="col-md-4 mb-3">
-          <label for="validationCustom02"
-            >Zip Code<sup class="require">*</sup></label
-          >
-          <input type="number" class="form-control" id="" required />
-        </div>
-      </div>
-      <h4 class="form-section-title">CONTACT DETAILS</h4>
-      <div class="form-row">
-        <div class="col-md-4 mb-3">
-          <label for="validationCustom03"
-            >Email<sup class="require">*</sup></label
-          >
-          <input
-            type="email"
-            class="form-control"
-            id=""
-            aria-describedby="emailHelp"
-            placeholder="Enter Email"
-          />
-        </div>
-        <div class="col-md-4 mb-3">
-          <label for="validationCustom03"
-            >Contact No<sup class="require">*</sup></label
-          >
-          <input
-            type="tel"
-            class="form-control"
-            id=""
-            pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-            required
-            placeholder="123-456-7890"
-          />
-        </div>
-        <div class="col-md-4 mb-3">
-          <label class="display-block">&nbsp;</label>
-          <button class="btn btn-blue" type="button">RESET</button> &nbsp;
-          <button class="btn btn-blue" type="submit">SEARCH</button>
+            RESGISTER
+          </button>
         </div>
       </div>
     </form>
+    {{ registerForm.value | json }}
     <div class="result-wrapp">
       <!-- <h4 class="result-wrapp-title">Result</h4> -->
       <!-- <table class="table table-striped">

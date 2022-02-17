@@ -12,6 +12,9 @@
 
       <div class="card my-auto border-none boxshadow-none">
         <div class="card-body px-5">
+          <div class="alert alert-danger mt-3" *ngIf="errorApi" role="alert">
+            {{ errordata.error }}
+          </div>
           <form
             class="loginform"
             [formGroup]="loginForm"
@@ -59,9 +62,7 @@
               name=""
             />
           </form>
-          <div class="alert alert-danger mt-3" *ngIf="errorApi" role="alert">
-            {{ errordata.error }}
-          </div>
+
           <div class="card-footer text-center border-none background-none">
             <small
               ><a class="forgot-password" routerLink=""

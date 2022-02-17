@@ -15,40 +15,10 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { PatientSearch } from './../../../../services/patientsearch.service';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-interface Patient {
-  firstname: string;
-  lastname: string;
-  country: string;
-  email: string;
-}
+import { Patient } from './../../../../services/patients';
 
-const PATIENTS: Patient[] = [
-  {
-    firstname: 'Ramesh',
-    lastname: 'Kahre',
-    country: 'India',
-    email: 'rameshkahre@gmail.com',
-  },
-  {
-    firstname: 'Sachin',
-    lastname: 'Kute',
-    country: 'India',
-    email: 'sachinkute@gmail.com',
-  },
-  {
-    firstname: 'Rahul',
-    lastname: 'Deshmukh',
-    country: 'India',
-    email: 'rahuldeshmukh@gmail.com',
-  },
-  {
-    firstname: 'Mahesh',
-    lastname: 'Sonavane',
-    country: 'India',
-    email: 'maheshsonavane@gmail.com',
-  },
-];
 @Component({
   selector: 'app-searchpatient',
   templateUrl: './searchpatient.component.html',
@@ -56,12 +26,16 @@ const PATIENTS: Patient[] = [
 })
 export class SearchpatientComponent implements OnInit {
   model: NgbDateStruct;
-  patients = PATIENTS;
   submitted = false;
-
-  constructor(private formBuilder: FormBuilder) {}
+  respondata: any;
+  errordata: any;
+  patientdata: any = {};
+  constructor(
+    private formBuilder: FormBuilder,
+    private patientSearch: PatientSearch
+  ) {}
   searchPatientForm = this.formBuilder.group({
-    accountNumer: [''],
+    patientId: ['', [Validators.maxLength(10), Validators.pattern('^[0-9]+$')]],
     firstName: [
       '',
       [
@@ -70,9 +44,10 @@ export class SearchpatientComponent implements OnInit {
         Validators.pattern('^[_A-z0-9]*((-|s)*[_A-z0-9])*$'),
       ],
     ],
-    middleName: ['', [Validators.required]],
-    lastName: ['', [Validators.required]],
+    middleName: [''],
+    lastname: ['', [Validators.required]],
     dateOfBirth: ['', [Validators.required]],
+    age: [''],
     contactNo: [
       '',
       [
@@ -82,21 +57,49 @@ export class SearchpatientComponent implements OnInit {
       ],
     ],
   });
+  get patientId() {
+    return this.searchPatientForm.get(['patientId']);
+  }
+  get firstName() {
+    return this.searchPatientForm.get(['firstName']);
+  }
+  get middleName() {
+    return this.searchPatientForm.get(['middleName']);
+  }
+  get lastname() {
+    return this.searchPatientForm.get(['lastname']);
+  }
+  get dateOfBirth() {
+    return this.searchPatientForm.get(['dateOfBirth']);
+  }
+  get contactNo() {
+    return this.searchPatientForm.get(['contactNo']);
+  }
   ngOnInit(): void {}
 
   // Submit Registration Form
   onSubmit() {
     this.submitted = true;
-    console.log(this.searchPatientForm.value);
-    if (!this.searchPatientForm.valid) {
-      alert('Please fill all the required fields');
-    } else {
-      console.log(this.searchPatientForm.value);
+    let ngbDate = this.searchPatientForm.controls['dateOfBirth'].value;
+    let myDate = new Date(ngbDate.year, ngbDate.month - 1, ngbDate.day);
+    let formValues = this.searchPatientForm.value;
+    formValues['dateOfBirth'] = myDate;
+    console.log(formValues);
+    if (this.searchPatientForm.valid) {
+      this.patientSearch.getPatientsList(formValues).subscribe(
+        (result) => {
+          this.respondata = result;
+          // display form values on success
+          alert(
+            'SUCCESS!! :-)\n\n' +
+              JSON.stringify(this.searchPatientForm.value, null, 4)
+          );
+        },
+        (err) => {
+          this.errordata = err;
+          console.log(this.errordata.error);
+        }
+      );
     }
-  }
-
-  // Getter method to access formcontrols
-  get myForm() {
-    return this.searchPatientForm.controls;
   }
 }
